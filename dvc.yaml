@@ -44,7 +44,7 @@ stages:
     - data/xtrain.csv
     - data/ytest.csv
     - data/ytrain.csv
-    outs:
+    plots:
     - plots/confusion_matrix.png
     metrics:
     - metrics/metrics.json:
