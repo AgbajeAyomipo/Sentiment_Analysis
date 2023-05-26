@@ -31,11 +31,11 @@ paths:
 
 split_data:
   random_state: 42
-  train_size: .80
+  train_size: .85
 
 train:
   alg: lr
 
 bow:
   min_df: 0.01
-  max_df: 0.85
+  max_df: 0.80
