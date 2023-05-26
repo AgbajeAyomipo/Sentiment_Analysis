@@ -21,14 +21,14 @@ stages:
       md5: 6f9d234f1968a1fd4d2395419da5408a
       size: 3413830
     - path: plots/non_racist_wordcloud.png
-      md5: acc3d166dfa908d25dd15d38ddfc50c8
-      size: 180026
+      md5: dbbade4369d95553165865db11c7e6ef
+      size: 190365
     - path: plots/pie_plot.png
       md5: 5e79655662b212c2f367b2cb67fd7796
       size: 39945
     - path: plots/racist_wordcloud.png
-      md5: cd753ce3344220c7f1ae14601bc5e725
-      size: 189792
+      md5: 1e0d7a7cf95d5e77a065ff503ee6ccc7
+      size: 193932
   featurize:
     cmd: python stages/featurize.py
     deps:
