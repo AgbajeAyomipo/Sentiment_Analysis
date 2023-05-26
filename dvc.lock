@@ -1,0 +1,98 @@
+schema: '2.0'
+stages:
+  data_load:
+    cmd: python stages/data_load.py
+    deps:
+    - path: data/Twitter_Sentiments.csv
+      md5: e4e4f90c48d6accade388090f0aec20f
+      size: 3103165
+    outs:
+    - path: data/new_data_.csv
+      md5: 2639008d52687aa39ad52e5076cffb98
+      size: 3135140
+  analyze:
+    cmd: python stages/analyze_.py
+    deps:
+    - path: data/new_data_.csv
+      md5: 2639008d52687aa39ad52e5076cffb98
+      size: 3135140
+    outs:
+    - path: data/analyzed.csv
+      md5: 6f9d234f1968a1fd4d2395419da5408a
+      size: 3413830
+    - path: plots/non_racist_wordcloud.png
+      md5: acc3d166dfa908d25dd15d38ddfc50c8
+      size: 180026
+    - path: plots/pie_plot.png
+      md5: 5e79655662b212c2f367b2cb67fd7796
+      size: 39945
+    - path: plots/racist_wordcloud.png
+      md5: cd753ce3344220c7f1ae14601bc5e725
+      size: 189792
+  featurize:
+    cmd: python stages/featurize.py
+    deps:
+    - path: data/analyzed.csv
+      md5: 6f9d234f1968a1fd4d2395419da5408a
+      size: 3413830
+    outs:
+    - path: data/featured.csv
+      md5: 9a48f08b888fc473a5b95249a5f6665e
+      size: 2660593
+  data_split:
+    cmd: python stages/data_split.py
+    deps:
+    - path: data/featured.csv
+      md5: 9a48f08b888fc473a5b95249a5f6665e
+      size: 2660593
+    outs:
+    - path: data/xtest.csv
+      md5: 4a1f78cc1e0694f1263632e2363f46bc
+      size: 431736
+    - path: data/xtrain.csv
+      md5: 98dd4bf2de32626de12eb9704c10a299
+      size: 1705565
+    - path: data/ytest.csv
+      md5: 2500b96ff13ebd586eb18ed92cb319c2
+      size: 74892
+    - path: data/ytrain.csv
+      md5: 38799115ad58e26b203aadc88a49369b
+      size: 299692
+  train:
+    cmd: python stages/train_.py
+    deps:
+    - path: data/xtest.csv
+      md5: 4a1f78cc1e0694f1263632e2363f46bc
+      size: 431736
+    - path: data/xtrain.csv
+      md5: 98dd4bf2de32626de12eb9704c10a299
+      size: 1705565
+    - path: data/ytrain.csv
+      md5: 38799115ad58e26b203aadc88a49369b
+      size: 299692
+    outs:
+    - path: models/model.pkl
+      md5: 3f235d7f26c514cf9d0dfdc3c9507d4a
+      size: 3519
+  evaluate:
+    cmd: python stages/evaluate_.py
+    deps:
+    - path: data/xtest.csv
+      md5: 4a1f78cc1e0694f1263632e2363f46bc
+      size: 431736
+    - path: data/xtrain.csv
+      md5: 98dd4bf2de32626de12eb9704c10a299
+      size: 1705565
+    - path: data/ytest.csv
+      md5: 2500b96ff13ebd586eb18ed92cb319c2
+      size: 74892
+    - path: data/ytrain.csv
+      md5: 38799115ad58e26b203aadc88a49369b
+      size: 299692
+    outs:
+    - path: metrics/metrics.json
+      md5: a40e47fc0bc0ee28d67ae7368ae93273
+      size: 46
+    - path: plots/confusion_matrix.png
+      md5: 419b1a059721843f53f0d6c0ed4d2991
+      size: 29586

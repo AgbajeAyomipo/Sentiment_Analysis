@@ -1,0 +1,51 @@
+stages:
+  data_load:
+    cmd: python stages/data_load.py
+    deps:
+    - data/Twitter_Sentiments.csv
+    outs:
+    - data/new_data_.csv
+  analyze:
+    cmd: python stages/analyze_.py
+    deps:
+    - data/new_data_.csv
+    outs:
+    - data/analyzed.csv
+    - plots/non_racist_wordcloud.png
+    - plots/pie_plot.png
+    - plots/racist_wordcloud.png
+  featurize:
+    cmd: python stages/featurize.py
+    deps:
+    - data/analyzed.csv
+    outs:
+    - data/featured.csv
+  data_split:
+    cmd: python stages/data_split.py
+    deps:
+    - data/featured.csv
+    outs:
+    - data/xtest.csv
+    - data/xtrain.csv
+    - data/ytest.csv
+    - data/ytrain.csv
+  train:
+    cmd: python stages/train_.py
+    deps:
+    - data/xtest.csv
+    - data/xtrain.csv
+    - data/ytrain.csv
+    outs:
+    - models/model.pkl
+  evaluate:
+    cmd: python stages/evaluate_.py
+    deps:
+    - data/xtest.csv
+    - data/xtrain.csv
+    - data/ytest.csv
+    - data/ytrain.csv
+    outs:
+    - plots/confusion_matrix.png
+    metrics:
+    - metrics/metrics.json:
+        cache: false

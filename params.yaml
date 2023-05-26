@@ -1,0 +1,41 @@
+data:
+  raw:
+    data_1: 'data/Twitter_Sentiments.csv'
+  processed:
+    data_1: 'data/new_data_.csv'
+    data_2: 'data/featured.csv'
+    data_3: 'data/xtrain.csv'
+    data_4: 'data/xtest.csv'
+    data_5: 'data/ytrain.csv'
+    data_6: 'data/ytest.csv'
+    data_7: 'data/analyzed.csv'
+
+paths:
+  plots:
+    img_1: 'plots/pie_plot.png'
+    img_2: 'plots/racist_wordcloud.png'
+    img_3: 'plots/non_racist_wordcloud.png'
+    img_4: 'plots/confusion_matrix.png'
+  processed: 
+    data_1: 'data/new_data_.csv'
+    data_2: 'data/featured.csv'
+    data_3: 'data/xtrain.csv'
+    data_4: 'data/xtest.csv'
+    data_5: 'data/ytrain.csv'
+    data_6: 'data/ytest.csv'
+    data_7: 'data/analyzed.csv'
+  models:
+    one_: 'models/model.pkl'
+  metrics:
+    two_: 'metrics/metrics.json'
+
+split_data:
+  random_state: 42
+  train_size: .80
+
+train:
+  alg: mnb
+
+bow:
+  min_df: 0.01
+  max_df: 0.85
