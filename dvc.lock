@@ -21,14 +21,14 @@ stages:
       md5: 2639008d52687aa39ad52e5076cffb98
       size: 3135140
     - path: plots/non_racist_wordcloud.png
-      md5: 28d0b71da0b705162f3fcffa641b912e
-      size: 181801
+      md5: 2e4041cdf964975fe70e7654bb40a55e
+      size: 192948
     - path: plots/pie_plot.png
       md5: 5e79655662b212c2f367b2cb67fd7796
       size: 39945
     - path: plots/racist_wordcloud.png
-      md5: 65ccf5d00349b36db0a0f828fbe19c6f
-      size: 188963
+      md5: a6b5590f67f2fec299ffd245942873c9
+      size: 176138
   featurize:
     cmd: python stages/featurize.py
     deps:
@@ -72,8 +72,8 @@ stages:
       size: 86308
     outs:
     - path: models/model.pkl
-      md5: e35a8be2ab394eee94dbddace97ce11d
-      size: 1439
+      md5: 582bf9d4748829d3f8352b50f0cc860a
+      size: 357345
   evaluate:
     cmd: python stages/evaluate_.py
     deps:
@@ -91,8 +91,8 @@ stages:
       size: 86308
     outs:
     - path: metrics/metrics.json
-      md5: 4aab17c9fdb7d28af6bd265665bc2343
-      size: 46
+      md5: 40301e34d99c60a876e3b8000f8d7fb6
+      size: 90
     - path: plots/confusion_matrix.png
       md5: 22f6eda8c18c56fa98f09b08d1307704
       size: 28625

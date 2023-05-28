@@ -61,7 +61,7 @@ def evaluate() -> None:
     plt.style.use('fivethirtyeight')
     fig, ax = plt.subplots(nrows = 1, ncols = 1, figsize = (8,8), facecolor = 'white')
     plot_ = ConfusionMatrixDisplay.from_predictions(y_true = y_test, y_pred = preds_, ax = ax,
-                                                    cmap = 'Blues', colorbar = False)
+                                                    cmap = 'Blues', colorbar = False, display_labels=['Not Racist', 'Racist'])
     ax.set_title('CONFUSION MATRIX')
     ax.tick_params(axis = 'x', labelsize = 14)
     ax.tick_params(axis = 'y', labelsize = 14, rotation = 45)
