@@ -1,0 +1,9 @@
+pandas
+numpy
+scikit-learn
+yaml
+matplotlib
+wordcloud
+Pillow
+nltk
+pickle4
