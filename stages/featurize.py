@@ -4,6 +4,7 @@ import nltk
 import nltk.corpus
 from nltk.corpus import stopwords
 from nltk.tokenize import WhitespaceTokenizer
+from nltk.tokenize.toktok import ToktokTokenizer
 from wordcloud import WordCloud
 import string
 import os
@@ -61,8 +62,8 @@ def featurize() -> None:
 
     # Remove stopwords again
     def remove_stopwords(text_):
-        wst = WhitespaceTokenizer()
-        tokens_ = wst.tokenize(text_)
+        ttt = ToktokTokenizer()
+        tokens_ = ttt.tokenize(text_)
         stop_words_ = stopwords.words('english')
         stop_words_.remove('not')
         stop_words_.remove('no')
@@ -75,6 +76,21 @@ def featurize() -> None:
         new_text_ = ' '.join(stopword_free_text_)
         return new_text_
     
+    # Remove all hashtags and user tags
+    def remove_tags(text_):
+        wst = WhitespaceTokenizer()
+        tokens_ = wst.tokenize(text_)
+
+        tag_free_text_ = []
+        for word_ in tokens_:
+            if '@' not in word_ or '#' not in word_:
+                tag_free_text_.append(word_)
+        
+        text__ = ' '.join(tag_free_text_)
+        return text_
+    
+    df_['Comments'] = df_['Comments'].apply(remove_tags)
+
     # Remove all New Lines
     def remove_new_lines(text_):
         return text_.replace('\n', '')

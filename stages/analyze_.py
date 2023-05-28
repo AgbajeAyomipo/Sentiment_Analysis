@@ -67,12 +67,12 @@ def analyze() -> None:
     # plt.imsave(fname = config__['paths']['plots']['img_3'], arr = img_)
     img_.to_file(config__['paths']['plots']['img_3'])
 
-    # sentiment_map = {
-    #     'Racist': 1,
-    #     'Not Racist': 0
-    # }
+    sentiment_map = {
+        'Racist': 1,
+        'Not Racist': 0
+    }
 
-    # df_['Classification'] = df_['Classification'].map(sentiment_map)
+    df_['Classification'] = df_['Classification'].map(sentiment_map)
     df_.to_csv(config__['paths']['processed']['data_7'], index = 0)
 
 
