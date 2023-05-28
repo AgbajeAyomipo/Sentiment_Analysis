@@ -41,7 +41,9 @@ def train() -> None:
     if alg_pick == 'mnb':
         alg_ = MultinomialNB()
     elif alg_pick == 'lr':
-        alg_ = LogisticRegression()
+        alg_ = LogisticRegression(solver='lbfgs', max_iter=100)
+    elif alg_pick == 'svc':
+        alg_ = SVC()
 
     alg_.fit(cv_x_train, y_train)
 

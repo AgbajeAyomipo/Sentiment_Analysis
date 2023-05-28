@@ -6,7 +6,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
 from sklearn.linear_model import LogisticRegression
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.svm import SVC
-from sklearn.metrics import accuracy_score, ConfusionMatrixDisplay
+from sklearn.metrics import accuracy_score, ConfusionMatrixDisplay, precision_score
 import yaml
 import os
 import pickle
@@ -43,9 +43,11 @@ def evaluate() -> None:
     preds_ = model.predict(cv_x_test)
 
     accuracy_score_ = accuracy_score(y_true = y_test, y_pred = preds_)
+    precision_score_ = precision_score(y_true = y_test, y_pred = preds_)
 
     metric_ = {
-        'accuracy_score': accuracy_score_
+        'accuracy_score': accuracy_score_,
+        'precision_score': precision_score_
     }
 
     metric_path = open(config__['paths']['metrics']['two_'], 'w')
@@ -59,7 +61,7 @@ def evaluate() -> None:
     plt.style.use('fivethirtyeight')
     fig, ax = plt.subplots(nrows = 1, ncols = 1, figsize = (8,8), facecolor = 'white')
     plot_ = ConfusionMatrixDisplay.from_predictions(y_true = y_test, y_pred = preds_, ax = ax,
-                                                    cmap = 'Blues', colorbar = False, display_labels=['Not Racist', 'Racist'])
+                                                    cmap = 'Blues', colorbar = False)
     ax.set_title('CONFUSION MATRIX')
     ax.tick_params(axis = 'x', labelsize = 14)
     ax.tick_params(axis = 'y', labelsize = 14, rotation = 45)

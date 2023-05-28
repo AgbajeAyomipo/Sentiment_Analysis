@@ -18,33 +18,33 @@ stages:
       size: 3135140
     outs:
     - path: data/analyzed.csv
-      md5: 6f9d234f1968a1fd4d2395419da5408a
-      size: 3413830
+      md5: 2639008d52687aa39ad52e5076cffb98
+      size: 3135140
     - path: plots/non_racist_wordcloud.png
-      md5: 1c97250155b70681e0891c9d45b6e130
-      size: 177672
+      md5: 28d0b71da0b705162f3fcffa641b912e
+      size: 181801
     - path: plots/pie_plot.png
       md5: 5e79655662b212c2f367b2cb67fd7796
       size: 39945
     - path: plots/racist_wordcloud.png
-      md5: 750b58d23029a9b570d9f26b16edced7
-      size: 194113
+      md5: 65ccf5d00349b36db0a0f828fbe19c6f
+      size: 188963
   featurize:
     cmd: python stages/featurize.py
     deps:
     - path: data/analyzed.csv
-      md5: 6f9d234f1968a1fd4d2395419da5408a
-      size: 3413830
+      md5: 2639008d52687aa39ad52e5076cffb98
+      size: 3135140
     outs:
     - path: data/featured.csv
-      md5: 9a48f08b888fc473a5b95249a5f6665e
-      size: 2660593
+      md5: 86d1bb7308b29e7b85e22e5f803b0fc4
+      size: 2381903
   data_split:
     cmd: python stages/data_split.py
     deps:
     - path: data/featured.csv
-      md5: 9a48f08b888fc473a5b95249a5f6665e
-      size: 2660593
+      md5: 86d1bb7308b29e7b85e22e5f803b0fc4
+      size: 2381903
     outs:
     - path: data/xtest.csv
       md5: 19cbfc2024bfddc1e2b875df575156f3
@@ -53,11 +53,11 @@ stages:
       md5: 01beb1b1d5c239982800dfd1f0b36bc4
       size: 1922147
     - path: data/ytest.csv
-      md5: 72b8bc768c7b044772b3d50533618722
-      size: 37444
+      md5: d8243a6f3e09e6deb2ca5008ee5f7a16
+      size: 9604
     - path: data/ytrain.csv
-      md5: 02119c106b822d5da07dc20001b00de3
-      size: 337140
+      md5: 8e35b9317914d84bc2e5ba95fdd8772f
+      size: 86308
   train:
     cmd: python stages/train_.py
     deps:
@@ -68,12 +68,12 @@ stages:
       md5: 01beb1b1d5c239982800dfd1f0b36bc4
       size: 1922147
     - path: data/ytrain.csv
-      md5: 02119c106b822d5da07dc20001b00de3
-      size: 337140
+      md5: 8e35b9317914d84bc2e5ba95fdd8772f
+      size: 86308
     outs:
     - path: models/model.pkl
-      md5: 351aa28122ad55e2c936386d1059ee94
-      size: 1448
+      md5: e35a8be2ab394eee94dbddace97ce11d
+      size: 1439
   evaluate:
     cmd: python stages/evaluate_.py
     deps:
@@ -84,11 +84,11 @@ stages:
       md5: 01beb1b1d5c239982800dfd1f0b36bc4
       size: 1922147
     - path: data/ytest.csv
-      md5: 72b8bc768c7b044772b3d50533618722
-      size: 37444
+      md5: d8243a6f3e09e6deb2ca5008ee5f7a16
+      size: 9604
     - path: data/ytrain.csv
-      md5: 02119c106b822d5da07dc20001b00de3
-      size: 337140
+      md5: 8e35b9317914d84bc2e5ba95fdd8772f
+      size: 86308
     outs:
     - path: metrics/metrics.json
       md5: 4aab17c9fdb7d28af6bd265665bc2343
