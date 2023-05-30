@@ -21,14 +21,14 @@ stages:
       md5: e94933ff25e8921489eda42ce806d29b
       size: 2837135
     - path: plots/non_racist_wordcloud.png
-      md5: 302a0f711014f0810bb44e906bf7d24e
-      size: 199614
+      md5: 06eea2fec74cfd613c6835bd2479198a
+      size: 201303
     - path: plots/pie_plot.png
       md5: 5e79655662b212c2f367b2cb67fd7796
       size: 39945
     - path: plots/racist_wordcloud.png
-      md5: 671ac5cade25a7a6e80e62753dc9ac57
-      size: 193903
+      md5: dd26611fe5b5cd348cf6ebdb1b0d5c94
+      size: 186035
   featurize:
     cmd: python stages/featurize.py
     deps:
@@ -47,52 +47,52 @@ stages:
       size: 2161753
     outs:
     - path: data/xtest.csv
-      md5: a428566a49c92088d429dba08aa78cf8
-      size: 383168
+      md5: 4abaaf044d5a4debe1296cb1691ead9e
+      size: 190715
     - path: data/xtrain.csv
-      md5: 69e74b291a6a2857a68d0deb7e198ee8
-      size: 1533977
+      md5: 0094471ade2f82a98ec8ce4e43a95273
+      size: 1726430
     - path: data/ytest.csv
-      md5: 8545a71b94884a393f0114a271582937
-      size: 19192
+      md5: 73569948e2e8ee76bc90ff5a046b2d93
+      size: 9604
     - path: data/ytrain.csv
-      md5: e48f1c145b7e475243485e6c632db603
-      size: 76711
+      md5: 90d7038cce36eb61ca22c2c93bf402d7
+      size: 86299
   train:
     cmd: python stages/train_.py
     deps:
     - path: data/xtest.csv
-      md5: a428566a49c92088d429dba08aa78cf8
-      size: 383168
+      md5: 4abaaf044d5a4debe1296cb1691ead9e
+      size: 190715
     - path: data/xtrain.csv
-      md5: 69e74b291a6a2857a68d0deb7e198ee8
-      size: 1533977
+      md5: 0094471ade2f82a98ec8ce4e43a95273
+      size: 1726430
     - path: data/ytrain.csv
-      md5: e48f1c145b7e475243485e6c632db603
-      size: 76711
+      md5: 90d7038cce36eb61ca22c2c93bf402d7
+      size: 86299
     outs:
     - path: models/model.pkl
-      md5: 057acee557c453c60b3c2c02d193cfbe
-      size: 1447
+      md5: 1156811e3440d320bbefd400006dcc09
+      size: 1503
   evaluate:
     cmd: python stages/evaluate_.py
     deps:
     - path: data/xtest.csv
-      md5: a428566a49c92088d429dba08aa78cf8
-      size: 383168
+      md5: 4abaaf044d5a4debe1296cb1691ead9e
+      size: 190715
     - path: data/xtrain.csv
-      md5: 69e74b291a6a2857a68d0deb7e198ee8
-      size: 1533977
+      md5: 0094471ade2f82a98ec8ce4e43a95273
+      size: 1726430
     - path: data/ytest.csv
-      md5: 8545a71b94884a393f0114a271582937
-      size: 19192
+      md5: 73569948e2e8ee76bc90ff5a046b2d93
+      size: 9604
     - path: data/ytrain.csv
-      md5: e48f1c145b7e475243485e6c632db603
-      size: 76711
+      md5: 90d7038cce36eb61ca22c2c93bf402d7
+      size: 86299
     outs:
     - path: metrics/metrics.json
-      md5: 9b383d4d08d7459ce61d1fa75c059cd2
+      md5: 4a73dd4236bf06aa36308fa6ea55bba7
       size: 89
     - path: plots/confusion_matrix.png
-      md5: 2bd35157705f9c38d3f3841573b4b0bd
-      size: 29212
+      md5: 3b20ac28d14ca7f84a505f00bb7fefeb
+      size: 29504

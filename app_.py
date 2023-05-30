@@ -97,10 +97,11 @@ def test_for_racism(text_):
 
     prediction_ = predictor.predict(bow_x)
 
+    # return prediction_
     if prediction_ == 0:
         return f"The comment above is not racist"
     elif prediction_ == 1:
-        return f"The comment above is very racist, wicked soul"
+        return f"The comment above is very racist"
 
 
 with gr.Blocks() as demo:
@@ -109,7 +110,7 @@ with gr.Blocks() as demo:
     generate_ = gr.Button('Generate Response')
     generate_.click(fn = test_for_racism, inputs = name, outputs = output)
 
-# demo = gr.Interface(fn = test_for_racism, inputs = "text", outputs = "text")
+# demo = gr.Interface(fn = test_for_racism, inputs = "text", outputs = gr.Number())
 
 demo.launch(share = False)
 

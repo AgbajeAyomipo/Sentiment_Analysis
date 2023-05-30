@@ -31,7 +31,7 @@ paths:
 
 split_data:
   random_state: 42
-  train_size: .80
+  train_size: .90
 
 train:
   alg: 'lr'
