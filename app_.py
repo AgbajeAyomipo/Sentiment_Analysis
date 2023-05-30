@@ -10,9 +10,12 @@ from sklearn.model_selection import train_test_split
 import string
 import numpy as np
 import pandas as pd
+from cleantext import clean
+
 
 def test_for_racism(text_):
     text_ = text_.lower()
+    text_ = clean(text_, no_emoji = True)
 
     wst = WhitespaceTokenizer()
     tokens_ = wst.tokenize(text_)
