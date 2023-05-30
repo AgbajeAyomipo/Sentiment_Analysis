@@ -9,6 +9,7 @@ from wordcloud import WordCloud
 import string
 import os
 import yaml
+from cleantext import clean
 
 def featurize() -> None:
     os.chdir('C:/Users/Ayo Agbaje/Documents/Code/Python/GIGS/PYTHON_docs/py_files/Sentiment_Analysis')

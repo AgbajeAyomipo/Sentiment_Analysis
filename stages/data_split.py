@@ -19,7 +19,8 @@ def data_split() -> None:
 
     X_train, X_test, y_train, y_test = train_test_split(X, y,
                                                         train_size=config__['split_data']['train_size'],
-                                                        random_state=config__['split_data']['random_state'])
+                                                        random_state=config__['split_data']['random_state'],
+                                                        stratify=y)
     # X_train.shape, X_test.shape
 
     xtrain_df = pd.DataFrame(data = X_train, columns = ['Comments'])

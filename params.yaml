@@ -34,7 +34,7 @@ split_data:
   train_size: .80
 
 train:
-  alg: 'svc'
+  alg: 'lr'
 
 bow:
   min_df: 0.01
